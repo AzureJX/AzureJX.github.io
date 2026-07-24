@@ -310,6 +310,88 @@
     margin-top: 14px;
   }
 
+  /* Experience flip cards */
+  .flip-card {
+    height: 420px;
+    margin-bottom: 20px;
+    perspective: 1400px;
+    cursor: pointer;
+  }
+  .flip-card:last-child { margin-bottom: 0; }
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
+  }
+  .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+  .flip-card:focus-visible { outline: 2px solid var(--copper); outline-offset: 4px; }
+
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .flip-card-front { background: var(--paper-dim); }
+  .flip-media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .flip-hint {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    background: rgba(251, 252, 251, 0.85);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 4px 8px;
+  }
+  .flip-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 16px 18px 14px;
+    background: linear-gradient(to top, rgba(23, 36, 32, 0.94), rgba(23, 36, 32, 0.55) 75%, rgba(23, 36, 32, 0));
+  }
+  .flip-caption h3 { color: #fff; font-size: 18px; margin: 0; }
+  .flip-caption .card-org { color: #E3A66B; font-weight: 500; }
+  .flip-caption .card-date {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.75);
+    margin-top: 4px;
+  }
+
+  .flip-card-back {
+    background: var(--card);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    transform: rotateY(180deg);
+  }
+  .flip-card-back .card-head { margin-bottom: 8px; }
+  .flip-card-back p { flex: 1; }
+
+  @media (max-width: 640px) {
+    .flip-card { height: 480px; }
+  }
+
   /* Projects */
   .project-feature {
     display: grid;
@@ -440,74 +522,125 @@
     <div class="eyebrow">Experience</div>
     <h2 class="section-title">Work</h2>
 
-    <div class="card">
-      <div class="card-head">
-        <div><h3>Embedded Engineer Intern</h3><span class="card-org"> · Siemens Energy</span></div>
-        <div class="card-date">May 2026 – Present</div>
-      </div>
-      <p>
-        Building a Jetson-based inspection robot that navigates the interior of generator stators. I set up
-        real-time localization by fusing IMU and encoder data through a ROS2 Extended Kalman Filter, and designed
-        the electrical and communication interfaces that tie the robot's sensors together. On the firmware side,
-        I'm writing C++ (via PlatformIO) to drive motors, load cells, and capacitive sensors, plus a Go-based GUI
-        for the operator.
-      </p>
-      <div class="tags">
-        <span class="tag">ROS2</span><span class="tag">EKF</span><span class="tag">Jetson</span>
-        <span class="tag">C++</span><span class="tag">PlatformIO</span><span class="tag">Go</span>
-      </div>
-      <div class="img-placeholder">Add a photo of the robot or hardware setup here</div>
-    </div>
-
-    <div class="card">
-      <div class="card-head">
-        <div><h3>Research Assistant</h3><span class="card-org"> · CMU FastML Lab</span></div>
-        <div class="card-date">May 2025 – Dec 2025</div>
-      </div>
-      <p>
-        Worked on accelerating FPGA-based graph neural network inference for particle clustering in CERN's
-        Large Hadron Collider data pipeline. Used layer-wise fixed-point quantization, structured pruning, and an
-        optimized GarNet aggregation step (via the FlowGNN dataflow architecture) to bring inference latency down
-        into the sub-microsecond range, and benchmarked the result against GPU performance — landing a 2.5×
-        throughput improvement.
-      </p>
-      <div class="tags">
-        <span class="tag">FPGA</span><span class="tag">Vivado HLS</span><span class="tag">PyTorch</span>
-        <span class="tag">Quantization</span><span class="tag">GNNs</span>
+    <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Embedded Engineer Intern at Siemens Energy — click to flip for details">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img class="flip-media" src="images/SE.heic" alt="Embedded Engineer Intern at Siemens Energy">
+          <div class="flip-hint">Click to flip</div>
+          <div class="flip-caption">
+            <h3>Embedded Engineer Intern</h3>
+            <span class="card-org">· Siemens Energy</span>
+            <div class="card-date">May 2026 – Present</div>
+          </div>
+        </div>
+        <div class="flip-card-back">
+          <div class="card-head">
+            <div><h3>Embedded Engineer Intern</h3><span class="card-org"> · Siemens Energy</span></div>
+            <div class="card-date">May 2026 – Present</div>
+          </div>
+          <p>
+            Building a Jetson-based inspection robot that navigates the interior of generator stators. I set up
+            real-time localization by fusing IMU and encoder data through a ROS2 Extended Kalman Filter, and designed
+            the electrical and communication interfaces that tie the robot's sensors together. On the firmware side,
+            I'm writing C++ (via PlatformIO) to drive motors, load cells, and capacitive sensors, plus a Go-based GUI
+            for the operator.
+          </p>
+          <div class="tags">
+            <span class="tag">ROS2</span><span class="tag">EKF</span><span class="tag">Jetson</span>
+            <span class="tag">C++</span><span class="tag">PlatformIO</span><span class="tag">Go</span>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-head">
-        <div><h3>Payload Builder</h3><span class="card-org"> · CMU Rocket Command</span></div>
-        <div class="card-date">Oct 2024 – Jun 2025</div>
-      </div>
-      <p>
-        Built the telemetry system for a high-power rocket payload: an I²C network linking four distributed IMU
-        nodes, a flight-phase state machine driven by accelerometer and barometer fusion, and an SPI-based data
-        logger recording temperature, pressure, acceleration, and velocity on a resource-constrained microcontroller.
-        Sensor data made it back to the ground over APRS radio using the LightAPRS protocol.
-      </p>
-      <div class="tags">
-        <span class="tag">Embedded C</span><span class="tag">I²C / SPI</span><span class="tag">Sensor Fusion</span>
-        <span class="tag">APRS</span>
+    <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Research Assistant at CMU FastML Lab — click to flip for details">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img class="flip-media" src="images/FM.png" alt="Research Assistant at CMU FastML Lab">
+          <div class="flip-hint">Click to flip</div>
+          <div class="flip-caption">
+            <h3>Research Assistant</h3>
+            <span class="card-org">· CMU FastML Lab</span>
+            <div class="card-date">May 2025 – Dec 2025</div>
+          </div>
+        </div>
+        <div class="flip-card-back">
+          <div class="card-head">
+            <div><h3>Research Assistant</h3><span class="card-org"> · CMU FastML Lab</span></div>
+            <div class="card-date">May 2025 – Dec 2025</div>
+          </div>
+          <p>
+            Worked on accelerating FPGA-based graph neural network inference for particle clustering in CERN's
+            Large Hadron Collider data pipeline. Used layer-wise fixed-point quantization, structured pruning, and an
+            optimized GarNet aggregation step (via the FlowGNN dataflow architecture) to bring inference latency down
+            into the sub-microsecond range, and benchmarked the result against GPU performance — landing a 2.5×
+            throughput improvement.
+          </p>
+          <div class="tags">
+            <span class="tag">FPGA</span><span class="tag">Vivado HLS</span><span class="tag">PyTorch</span>
+            <span class="tag">Quantization</span><span class="tag">GNNs</span>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-head">
-        <div><h3>Photolithography Stepper Developer</h3><span class="card-org"> · Hacker Fab, CMU</span></div>
-        <div class="card-date">Aug 2025 – Dec 2025</div>
+    <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Payload Builder at CMU Rocket Command — click to flip for details">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img class="flip-media" src="images/CMRC.png" alt="Payload Builder at CMU Rocket Command">
+          <div class="flip-hint">Click to flip</div>
+          <div class="flip-caption">
+            <h3>Payload Builder</h3>
+            <span class="card-org">· CMU Rocket Command</span>
+            <div class="card-date">Oct 2024 – Jun 2025</div>
+          </div>
+        </div>
+        <div class="flip-card-back">
+          <div class="card-head">
+            <div><h3>Payload Builder</h3><span class="card-org"> · CMU Rocket Command</span></div>
+            <div class="card-date">Oct 2024 – Jun 2025</div>
+          </div>
+          <p>
+            Built the telemetry system for a high-power rocket payload: an I²C network linking four distributed IMU
+            nodes, a flight-phase state machine driven by accelerometer and barometer fusion, and an SPI-based data
+            logger recording temperature, pressure, acceleration, and velocity on a resource-constrained microcontroller.
+            Sensor data made it back to the ground over APRS radio using the LightAPRS protocol.
+          </p>
+          <div class="tags">
+            <span class="tag">Embedded C</span><span class="tag">I²C / SPI</span><span class="tag">Sensor Fusion</span>
+            <span class="tag">APRS</span>
+          </div>
+        </div>
       </div>
-      <p>
-        Designed the control architecture for a DIY lithography stepper — clean hardware abstraction layers for
-        the cameras (FLIR, Basler), GRBL-based motion control, and exposure sequencing, coordinated through
-        event-driven state machines. Built a closed-loop vision pipeline (YOLO for alignment, OpenCV for focus
-        scoring) and logged every run to JSON so experiments stayed reproducible.
-      </p>
-      <div class="tags">
-        <span class="tag">Computer Vision</span><span class="tag">YOLO</span><span class="tag">OpenCV</span>
-        <span class="tag">GRBL</span><span class="tag">State Machines</span>
+    </div>
+
+    <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Photolithography Stepper Developer at Hacker Fab, CMU — click to flip for details">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img class="flip-media" src="images/PS.png" alt="Photolithography Stepper Developer at Hacker Fab, CMU">
+          <div class="flip-hint">Click to flip</div>
+          <div class="flip-caption">
+            <h3>Photolithography Stepper Developer</h3>
+            <span class="card-org">· Hacker Fab, CMU</span>
+            <div class="card-date">Aug 2025 – Dec 2025</div>
+          </div>
+        </div>
+        <div class="flip-card-back">
+          <div class="card-head">
+            <div><h3>Photolithography Stepper Developer</h3><span class="card-org"> · Hacker Fab, CMU</span></div>
+            <div class="card-date">Aug 2025 – Dec 2025</div>
+          </div>
+          <p>
+            Designed the control architecture for a DIY lithography stepper — clean hardware abstraction layers for
+            the cameras (FLIR, Basler), GRBL-based motion control, and exposure sequencing, coordinated through
+            event-driven state machines. Built a closed-loop vision pipeline (YOLO for alignment, OpenCV for focus
+            scoring) and logged every run to JSON so experiments stayed reproducible.
+          </p>
+          <div class="tags">
+            <span class="tag">Computer Vision</span><span class="tag">YOLO</span><span class="tag">OpenCV</span>
+            <span class="tag">GRBL</span><span class="tag">State Machines</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -659,6 +792,21 @@
     });
   }, { threshold: 0.12 });
   revealEls.forEach(el => io.observe(el));
+
+  // Experience flip cards
+  document.querySelectorAll('.flip-card').forEach(card => {
+    const toggle = () => {
+      const flipped = card.classList.toggle('flipped');
+      card.setAttribute('aria-pressed', flipped);
+    };
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggle();
+      }
+    });
+  });
 
   // Footer date
   document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
