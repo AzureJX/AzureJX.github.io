@@ -346,6 +346,20 @@
     height: 100%;
     object-fit: cover;
   }
+  .flip-media-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-faint);
+    background: var(--paper-dim);
+    border-bottom: 2px dashed var(--border);
+  }
   .flip-hint {
     position: absolute;
     top: 12px;
@@ -484,7 +498,6 @@
       <div class="hero-actions">
         <a class="btn primary" href="mailto:jocelynxu888@gmail.com">Email me</a>
         <a class="btn" href="https://www.linkedin.com/in/jocelyn-xu-5b8077324" target="_blank" rel="noopener">LinkedIn ↗</a>
-        <a class="btn" href="#" id="resumeLink">Résumé (PDF) ↓</a>
       </div>
     </div>
     <div class="headshot">
@@ -507,11 +520,6 @@
       That's shown up in FPGA-accelerated particle physics pipelines, rocket telemetry boards, and a computer-vision
       lithography rig — different domains, same instinct for instrumentation.
     </p>
-    <p style="max-width: 62ch; color: var(--ink-soft); font-size: 16px;">
-      <!-- Placeholder: personalize with hobbies/interests if you'd like a more personal touch here -->
-      Add a sentence or two here about what you're into outside of coursework and labs — it helps the site read like
-      a person, not just a resume.
-    </p>
   </div>
 </section>
 
@@ -525,7 +533,7 @@
     <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Embedded Engineer Intern at Siemens Energy — click to flip for details">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img class="flip-media" src="images/SE.png" alt="Embedded Engineer Intern at Siemens Energy">
+          <img class="flip-media" src="images/SE.JPG" alt="Embedded Engineer Intern at Siemens Energy">
           <div class="flip-hint">Click to flip</div>
           <div class="flip-caption">
             <h3>Embedded Engineer Intern</h3>
@@ -617,7 +625,7 @@
     <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Photolithography Stepper Developer at Hacker Fab, CMU — click to flip for details">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img class="flip-media" src="images/PS.png" alt="Photolithography Stepper Developer at Hacker Fab, CMU">
+          <img class="flip-media" src="images/PS.jpg" alt="Photolithography Stepper Developer at Hacker Fab, CMU">
           <div class="flip-hint">Click to flip</div>
           <div class="flip-caption">
             <h3>Photolithography Stepper Developer</h3>
@@ -653,42 +661,105 @@
     <div class="eyebrow">Projects</div>
     <h2 class="section-title">Selected work</h2>
 
-    <div class="card project-feature">
-      <div>
-        <div class="card-head"><h3>Stator Inspection Robot</h3><div class="card-date">Ongoing</div></div>
-        <p>
-          A closer look at the Siemens Energy project above: the robot has to localize itself inside a metal
-          cylinder with almost no visual texture and no GPS, so I've been combining wheel + draw-wire encoder
-          odometry with IMU data in a ROS2 EKF, while separately experimenting with dense optical-flow panorama
-          stitching to reconstruct a full interior view from onboard cameras.
-        </p>
-        <div class="tags">
-          <span class="tag">ROS2</span><span class="tag">Sensor Fusion</span><span class="tag">Computer Vision</span>
+    <div class="project-grid">
+      <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="FollowBot — click to flip for details">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img class="flip-media" src="images/followbot.JPG" alt="FollowBot">
+            <div class="flip-hint">Click to flip</div>
+            <div class="flip-caption">
+              <h3>FollowBot</h3>
+              <div class="card-date">Build18, Jan 2026</div>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <div class="card-head">
+              <h3>FollowBot</h3>
+              <div class="card-date">Build18, Jan 2026</div>
+            </div>
+            <p>
+              An autonomous person-following robot on a Raspberry Pi, combining YOLO-based vision, Bluetooth RSSI, and
+              ultrasonic sensing to keep a lock on its target. Steering ran through a PID controller driving a TB6612
+              motor driver via PWM, coordinated by a small state machine.
+            </p>
+            <div class="tags"><span class="tag">Raspberry Pi</span><span class="tag">YOLO</span><span class="tag">PID</span></div>
+          </div>
         </div>
       </div>
-      <div class="img-placeholder">Add a photo, diagram, or panorama capture here</div>
-    </div>
 
-    <div class="project-grid">
-      <div class="card">
-        <div class="card-head"><h3>FollowBot</h3><div class="card-date">Build18, Jan 2026</div></div>
-        <p>
-          An autonomous person-following robot on a Raspberry Pi, combining YOLO-based vision, Bluetooth RSSI, and
-          ultrasonic sensing to keep a lock on its target. Steering ran through a PID controller driving a TB6612
-          motor driver via PWM, coordinated by a small state machine.
-        </p>
-        <div class="tags"><span class="tag">Raspberry Pi</span><span class="tag">YOLO</span><span class="tag">PID</span></div>
-        <div class="img-placeholder">Add a demo photo or video thumbnail</div>
+      <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Smart Fridge Manager — click to flip for details">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img class="flip-media" src="images/fridge.png" alt="Smart Fridge Manager">
+            <div class="flip-hint">Click to flip</div>
+            <div class="flip-caption">
+              <h3>Smart Fridge Manager</h3>
+              <div class="card-date">TartanHack, Jan 2026</div>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <div class="card-head">
+              <h3>Smart Fridge Manager</h3>
+              <div class="card-date">TartanHack, Jan 2026</div>
+            </div>
+            <p>
+              A full-stack grocery tracker that OCRs your receipt (Tesseract.js), uses GPT-4o-mini to turn that into
+              structured items, and recommends recipes via the Spoonacular API — all wrapped in a React UI with a
+              drag-and-drop meal planner.
+            </p>
+            <div class="tags"><span class="tag">React</span><span class="tag">Firebase</span><span class="tag">OCR</span><span class="tag">GPT-4o-mini</span></div>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-head"><h3>Smart Fridge Manager</h3><div class="card-date">TartanHack, Jan 2026</div></div>
-        <p>
-          A full-stack grocery tracker that OCRs your receipt (Tesseract.js), uses GPT-4o-mini to turn that into
-          structured items, and recommends recipes via the Spoonacular API — all wrapped in a React UI with a
-          drag-and-drop meal planner.
-        </p>
-        <div class="tags"><span class="tag">React</span><span class="tag">Firebase</span><span class="tag">OCR</span><span class="tag">GPT-4o-mini</span></div>
-        <div class="img-placeholder">Add a screenshot of the app</div>
+
+      <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Arcade Space Exploration Game — click to flip for details">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img class="flip-media" src="images/traveler.png" alt="Arcade Space Exploration Game">
+            <div class="flip-hint">Click to flip</div>
+            <div class="flip-caption">
+              <h3>Arcade Space Exploration Game</h3>
+              <div class="card-date">December 2024</div>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <div class="card-head">
+              <h3>Arcade Space Exploration Game</h3>
+              <div class="card-date">December 2024</div>
+            </div>
+            <p>
+              Developed a 2D space exploration game using Python animations and CMU graphics. Designed the user
+              interface, and simulated planetary exploration, autonomous navigation, and physical interactions such
+              as gravity-based movements.
+            </p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">CMU Graphics</span><span class="tag">Game Dev</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Action-Adventure Sandbox Game — click to flip for details">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img class="flip-media" src="images/sandbox.JPG" alt="Action-Adventure Sandbox Game">
+            <div class="flip-hint">Click to flip</div>
+            <div class="flip-caption">
+              <h3>Action-Adventure Sandbox Game</h3>
+              <div class="card-date">November 2024</div>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <div class="card-head">
+              <h3>Action-Adventure Sandbox Game</h3>
+              <div class="card-date">November 2024</div>
+            </div>
+            <p>
+              Built a grid-based sandbox world with diverse terrain types using Python animations, using PIL for
+              image manipulation. Achieved random terrain generation, smooth character movement, and an inventory
+              system for item collection and placement.
+            </p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">PIL</span><span class="tag">Game Dev</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -810,12 +881,6 @@
 
   // Footer date
   document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
-
-  // Resume link placeholder notice
-  document.getElementById('resumeLink').addEventListener('click', function(e) {
-    e.preventDefault();
-    alert('Add your resume PDF to the project folder and update this link\'s href to point to it, e.g. href="resume.pdf"');
-  });
 </script>
 
 </body>
