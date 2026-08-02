@@ -416,6 +416,16 @@
   .flip-card-back ul.robot-list li { margin-bottom: 12px; }
   .flip-card-back ul.robot-list li:last-child { margin-bottom: 0; }
   .flip-card-back ul.robot-list strong { color: var(--copper-deep); font-weight: 600; }
+  .flip-card-back .card-links {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+  }
+  .flip-card-back .card-links .btn {
+    font-size: 16px;
+    padding: 4px 6px;
+  }
 
   @media (max-width: 640px) {
     .flip-card { height: 480px; }
@@ -440,7 +450,7 @@
   @media (max-width: 640px) { .project-grid { grid-template-columns: 1fr; } }
 
   /* Skills */
-  .skill-group { margin-bottom: 28px; }
+  .skill-group { margin-bottom: 16px; }
   .skill-group:last-child { margin-bottom: 0; }
   .skill-group h4 {
     font-family: var(--font-mono);
@@ -448,14 +458,14 @@
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--ink-soft);
-    margin: 0 0 13px;
+    margin: 0 0 6px;
     font-weight: 600;
   }
   /* Skills tags sit directly on the paper background (no card behind them),
      so they need an opaque fill + a clearly visible border to read against the texture. */
   #skills .tag {
     font-size: 15px;
-    padding: 8px 15px;
+    padding: 4px 8px;
     background: var(--card);
     border: 1.5px solid var(--mask-green);
   }
@@ -464,10 +474,10 @@
   .coursework { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
   .coursework .tag {
     background: var(--card);
-    color: var(--ink);
+    color: var(--mask-green);
     border: 1.5px solid var(--ink-soft);
     font-size: 15px;
-    padding: 8px 15px;
+    padding: 4px 8px;
   }
   #education .card-date { color: var(--ink-soft); font-size: 15px; }
 
@@ -708,6 +718,9 @@
             <span class="tag">FPGA</span><span class="tag">PyTorch</span>
             <span class="tag">Quantization</span><span class="tag">GNNs</span>
           </div>
+          <div class="card-links">
+            <a class="btn" href="https://github.com/AzureJX/L1DeepMETv2_HGQ" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
         </div>
       </div>
     </div>
@@ -737,6 +750,9 @@
           <div class="tags">
             <span class="tag">C</span><span class="tag">Data Structures</span><span class="tag">Algorithms</span>
             <span class="tag">Teaching</span>
+          </div>
+          <div class="card-links">
+            <a class="btn" href="https://www.cs.cmu.edu/~15122-archive/n25/staff.shtml" target="_blank" rel="noopener">Course site ↗</a>
           </div>
         </div>
       </div>
@@ -798,6 +814,10 @@
             <span class="tag">Computer Vision</span><span class="tag">OpenCV</span>
             <span class="tag">GUI</span><span class="tag">State Machines</span>
           </div>
+          <div class="card-links">
+            <a class="btn" href="https://github.com/hacker-fab/stepper" target="_blank" rel="noopener">GitHub ↗</a>
+            <a class="btn" href="https://docs.hackerfab.org/home/fab-toolkit/patterning/lithography-stepper-v2-build-work-in-progress" target="_blank" rel="noopener">Docs ↗</a>
+          </div>
         </div>
       </div>
     </div>
@@ -856,6 +876,9 @@
               drag-and-drop meal planner.
             </p>
             <div class="tags"><span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">Firebase</span><span class="tag">OCR</span></div>
+            <div class="card-links">
+              <a class="btn" href="https://github.com/sissizh3n/leftover-chef" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
           </div>
         </div>
       </div>
@@ -881,6 +904,10 @@
               as gravity-based movements.
             </p>
             <div class="tags"><span class="tag">Python</span><span class="tag">CMU Graphics</span><span class="tag">Game Dev</span></div>
+            <div class="card-links">
+              <a class="btn" href="https://github.com/AzureJX/Traveler" target="_blank" rel="noopener">GitHub ↗</a>
+              <a class="btn" href="https://youtu.be/Y9oLwxrG9PE" target="_blank" rel="noopener">Demo ↗</a>
+            </div>
           </div>
         </div>
       </div>
