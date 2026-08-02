@@ -46,10 +46,8 @@
     font-family: var(--font-body);
     line-height: 1.6;
     font-size: 16px;
-    background-image:
-      linear-gradient(var(--grid-line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-    background-size: 28px 28px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cg fill='none' stroke='%23CBD4D0' stroke-width='1.5'%3E%3Cpath d='M0 30 H70 V90 H150 V30 H240'/%3E%3Cpath d='M0 150 H50 V210 H120 V240'/%3E%3Cpath d='M180 0 V60 H240'/%3E%3Cpath d='M100 0 V40 H40 V120 H0'/%3E%3Cpath d='M160 120 H220 V180 H240'/%3E%3Cpath d='M0 200 H30 V240'/%3E%3Cpath d='M200 180 V240'/%3E%3Cpath d='M120 90 V150 H160'/%3E%3C/g%3E%3Cg fill='%23EEF1EF' stroke='%23CBD4D0' stroke-width='1.5'%3E%3Ccircle cx='70' cy='30' r='4'/%3E%3Ccircle cx='150' cy='90' r='4'/%3E%3Ccircle cx='50' cy='150' r='4'/%3E%3Ccircle cx='120' cy='210' r='4'/%3E%3Ccircle cx='180' cy='60' r='4'/%3E%3Ccircle cx='40' cy='40' r='4'/%3E%3Ccircle cx='220' cy='120' r='4'/%3E%3Ccircle cx='120' cy='90' r='4'/%3E%3Ccircle cx='160' cy='150' r='4'/%3E%3C/g%3E%3Cg fill='%23B5651D' fill-opacity='0.55'%3E%3Ccircle cx='70' cy='30' r='1.6'/%3E%3Ccircle cx='150' cy='90' r='1.6'/%3E%3Ccircle cx='120' cy='210' r='1.6'/%3E%3Ccircle cx='160' cy='150' r='1.6'/%3E%3C/g%3E%3Cg fill='%232F6E52' fill-opacity='0.55'%3E%3Ccircle cx='50' cy='150' r='1.6'/%3E%3Ccircle cx='180' cy='60' r='1.6'/%3E%3Ccircle cx='220' cy='120' r='1.6'/%3E%3Ccircle cx='40' cy='40' r='1.6'/%3E%3Ccircle cx='120' cy='90' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 240px 240px;
     background-attachment: fixed;
   }
 
@@ -462,6 +460,86 @@
     color: var(--ink-faint);
   }
 
+  /* ---------- Photography ---------- */
+  .photo-grid {
+    columns: 4 240px;
+    column-gap: 14px;
+    margin-top: 8px;
+  }
+  .photo-item {
+    display: block;
+    width: 100%;
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    margin-bottom: 14px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--paper-dim);
+    cursor: zoom-in;
+    padding: 0;
+  }
+  .photo-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.4s ease;
+  }
+  .photo-item:hover img { transform: scale(1.03); }
+  .photo-item:focus-visible { outline: 2px solid var(--mask-green); outline-offset: 2px; }
+
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(15, 20, 18, 0.92);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: min(92vw, 1200px);
+    max-height: 88vh;
+    width: auto;
+    height: auto;
+    border-radius: 2px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .lightbox-close, .lightbox-nav {
+    position: absolute;
+    background: rgba(251, 252, 251, 0.1);
+    border: 1.5px solid rgba(255,255,255,0.4);
+    color: #fff;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-family: var(--font-mono);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lightbox-close:hover, .lightbox-nav:hover { background: rgba(255,255,255,0.2); }
+  .lightbox-close { top: 20px; right: 20px; width: 40px; height: 40px; font-size: 18px; }
+  .lightbox-nav { top: 50%; transform: translateY(-50%); width: 46px; height: 46px; font-size: 20px; }
+  .lightbox-prev { left: 16px; }
+  .lightbox-next { right: 16px; }
+  .lightbox-counter {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: rgba(255,255,255,0.75);
+    letter-spacing: 0.06em;
+  }
+  @media (max-width: 640px) {
+    .photo-grid { columns: 2 150px; column-gap: 10px; }
+    .photo-item { margin-bottom: 10px; }
+    .lightbox-nav { width: 38px; height: 38px; }
+  }
+
   /* Reveal on scroll */
   .reveal {
     opacity: 0;
@@ -484,6 +562,7 @@
       <a href="#skills">Skills</a>
       <a href="#education">Education</a>
       <a href="#contact">Contact</a>
+      <a href="#photography">Photography</a>
     </nav>
   </div>
 </header>
@@ -512,13 +591,14 @@
   <div class="section-content reveal">
     <div class="eyebrow">About</div>
     <h2 class="section-title">Where hardware meets code</h2>
-    <p style="max-width: 62ch; color: var(--ink-soft); font-size: 16px;">
-      I'm a second-year ECE student at Carnegie Mellon, currently spending my summer at Siemens Energy building a
+    <p style="max-width: 62ch; color: var(--ink-soft); font-size: 20px;">
+      I'm a junior studying ECE at Carnegie Mellon, currently spending my summer at Siemens Energy building a
       robot that inspects the inside of generator stators — tight, dark, low-texture spaces where GPS and clean
       camera tracking don't exist. Outside of that, my projects tend to circle the same question: how do you get
       a signal you can trust out of a sensor, a circuit, or a chip, and turn it into something a machine can act on?
       That's shown up in FPGA-accelerated particle physics pipelines, rocket telemetry boards, and a computer-vision
-      lithography rig — different domains, same instinct for instrumentation.
+      lithography rig — different domains, same instinct for instrumentation. Outside of work, I like
+      <a href="#photography">photography</a> — still chasing a good signal, just through a viewfinder instead of a sensor board.
     </p>
   </div>
 </section>
@@ -693,13 +773,13 @@
             <img class="flip-media" src="images/fridge.png" alt="Smart Fridge Manager">
             <div class="flip-hint">Click to flip</div>
             <div class="flip-caption">
-              <h3>Smart Fridge Manager</h3>
+              <h3>Leftover Chef</h3>
               <div class="card-date">TartanHack, Jan 2026</div>
             </div>
           </div>
           <div class="flip-card-back">
             <div class="card-head">
-              <h3>Smart Fridge Manager</h3>
+              <h3>Leftover Chef</h3>
               <div class="card-date">TartanHack, Jan 2026</div>
             </div>
             <p>
@@ -842,9 +922,32 @@
   </div>
 </section>
 
+<!-- PHOTOGRAPHY -->
+<section class="section" id="photography">
+  <div class="rail"><div class="rail-node">PIX</div></div>
+  <div class="section-content reveal">
+    <div class="eyebrow">Photography</div>
+    <h2 class="section-title">Off the clock</h2>
+    <p style="max-width: 62ch; color: var(--ink-soft); font-size: 16px; margin-bottom: 8px;">
+      A few frames from wherever I've been pointing a camera lately.
+    </p>
+    <div class="photo-grid" id="photoGrid"></div>
+  </div>
+</section>
+
 <footer>
   Built by Jocelyn Xu · Last updated <span id="lastUpdated"></span>
 </footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous photo">‹</button>
+  <img id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next photo">›</button>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
+
+<script src="photography/manifest.js"></script>
 
 <script>
   // Mobile nav toggle
@@ -882,6 +985,61 @@
 
   // Footer date
   document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+
+  // Photography gallery (list of photos lives in photography/manifest.js —
+  // rerun scripts/build-photography.sh after adding/removing files there)
+  const photoGrid = document.getElementById('photoGrid');
+  const photos = typeof PHOTOS !== 'undefined' ? PHOTOS : [];
+
+  photos.forEach((photo, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'photo-item';
+    btn.setAttribute('aria-label', `Open photo ${i + 1} of ${photos.length}`);
+    const img = document.createElement('img');
+    img.src = `photography/${photo.file}`;
+    img.alt = `Photograph ${i + 1}`;
+    img.loading = 'lazy';
+    img.width = photo.w;
+    img.height = photo.h;
+    btn.appendChild(img);
+    btn.addEventListener('click', () => openLightbox(i));
+    photoGrid.appendChild(btn);
+  });
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCounter = document.getElementById('lightboxCounter');
+  let currentPhoto = 0;
+
+  function openLightbox(index) {
+    currentPhoto = index;
+    showPhoto();
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function showPhoto() {
+    const photo = photos[currentPhoto];
+    lightboxImg.src = `photography/${photo.file}`;
+    lightboxImg.alt = `Photograph ${currentPhoto + 1}`;
+    lightboxCounter.textContent = `${currentPhoto + 1} / ${photos.length}`;
+  }
+  function nextPhoto() { currentPhoto = (currentPhoto + 1) % photos.length; showPhoto(); }
+  function prevPhoto() { currentPhoto = (currentPhoto - 1 + photos.length) % photos.length; showPhoto(); }
+
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  document.getElementById('lightboxNext').addEventListener('click', nextPhoto);
+  document.getElementById('lightboxPrev').addEventListener('click', prevPhoto);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') nextPhoto();
+    if (e.key === 'ArrowLeft') prevPhoto();
+  });
 </script>
 
 </body>
