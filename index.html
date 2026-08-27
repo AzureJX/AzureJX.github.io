@@ -669,7 +669,9 @@
             <div class="card-date">May 2026 - Present</div>
           </div>
           <p style="flex: 0 0 auto; margin-top: 0;">
-            Working on two robots built to inspect the inside of generator stators.
+            Working on two generator inspection robots. This work was featured by CMU's College of Engineering,
+            in an <a href="https://engineering.cmu.edu/news-events/news/2026/08/21-security-to-satellites.html" target="_blank" rel="noopener">article</a>
+            and on <a href="https://www.instagram.com/p/DcT5LDCoERI/" target="_blank" rel="noopener">Instagram</a>.
           </p>
           <ul class="robot-list">
             <li>
@@ -682,9 +684,8 @@
               <strong>FastGen crawler:</strong> built the firmware for its 5-axis motion system. It's a tick-driven
               state machine with PID control and limit-switch homing, and synchronized ADC/DMA sensor acquisition
               with analog-watchdog interrupts, bridged to a Go host service over a custom serial protocol. I also
-              built the operator's desktop app (Electron/Svelte over a Go backend), with a pub/sub layer that
-              streams live robot data to the UI over WebSocket, job save/load with structured JSON persistence, and a
-              multi-page workflow that runs an automated closed-loop inspection sequence with live data visualization.
+              built the operator's desktop app (Electron/Svelte over a Go backend), with an automated closed-loop 
+              inspection workflow with data visualization.
             </li>
           </ul>
         </div>
