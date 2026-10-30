@@ -10,7 +10,6 @@ const PHOTOS = [
   { file: "web/IMG_1155.jpg", w: 1800, h: 1200 },
   { file: "web/IMG_1233.jpg", w: 1800, h: 1172 },
   { file: "web/IMG_1427.jpg", w: 1800, h: 1200 },
-  { file: "web/IMG_1735.jpg", w: 1800, h: 1200 },
   { file: "web/IMG_1815.jpg", w: 1800, h: 1200 },
   { file: "web/IMG_1999.jpg", w: 1200, h: 1800 },
   { file: "web/IMG_2.jpg", w: 1800, h: 1200 },

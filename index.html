@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jocelyn Xu — Electrical & Computer Engineering</title>
-<meta name="description" content="Jocelyn Xu — ECE student at Carnegie Mellon University. Embedded systems, robotics, and hardware/software integration.">
+<title>Jiawei (Jocelyn) Xu — Electrical & Computer Engineering</title>
+<meta name="description" content="Jiawei (Jocelyn) Xu — ECE student at Carnegie Mellon University. Hardware and silicon design, RTL development, verification, and computer architecture.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -614,15 +614,15 @@
   <div class="hero-grid">
     <div>
       <div class="eyebrow">Electrical &amp; Computer Engineering — CMU</div>
-      <h1>Jocelyn Xu <span class="accent">/ builds the systems that let machines sense &amp; move</span></h1>
-      <p class="lede">I work where hardware meets software, building systems that combine sensors, embedded software, and specialized hardware to help machines understand and interact with the physical world.</p>
+      <h1>Jiawei (Jocelyn) Xu <span class="accent">/ designs &amp; verifies digital hardware</span></h1>
+      <p class="lede">I focus on hardware and silicon design, from RTL and verification to computer architecture. I build digital systems with an eye toward timing, performance, and correctness.</p>
       <div class="hero-actions">
         <a class="btn primary" href="mailto:jocelynxu888@gmail.com">Email me</a>
-        <a class="btn" href="https://www.linkedin.com/in/jocelyn-xu-5b8077324" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn" href="https://www.linkedin.com/in/jiawei-xu-5b8077324" target="_blank" rel="noopener">LinkedIn ↗</a>
       </div>
     </div>
     <div class="headshot">
-      <img src="images/headshot.JPG" alt="Jocelyn Xu" style="width:100%; height:100%; object-fit:cover; border-radius:2px;">
+      <img src="images/headshot.JPG" alt="Jiawei (Jocelyn) Xu" style="width:100%; height:100%; object-fit:cover; border-radius:2px;">
     </div>
   </div>
 </section>
@@ -633,14 +633,18 @@
   <div class="section-content reveal">
     <h2 class="eyebrow eyebrow-lg">About</h2>
     <p style="max-width: 62ch; color: var(--ink-soft); font-size: 20px;">
-      I'm a junior studying ECE at Carnegie Mellon, currently spending my summer 
-      at Siemens Energy building a robot that inspects the inside of generator 
-      stators: tight, dark, low-texture spaces where GPS and clean camera tracking 
-      don't exist. Outside of that, my projects tend to circle the same question: 
-      how do you get a signal you can trust out of a sensor, a circuit, or a chip, 
-      and turn it into something a machine can act on? That's shown up in 
-      FPGA-accelerated particle physics pipelines, rocket telemetry boards, and 
-      a computer-vision lithography stepper. Outside of work I love
+      I'm an Electrical &amp; Computer Engineering student at Carnegie Mellon University,
+      focused on hardware and silicon design, RTL development, verification, and computer architecture.
+      I enjoy turning architectural ideas into working hardware, exploring the tradeoffs between
+      throughput, latency, timing, and resource use, and verifying that the implementation behaves as intended.
+      My recent projects include a pipelined matrix accelerator, a network-on-chip,
+      assertion-based IP verification, a streaming histogram counter with data forwarding, 
+      and CMOS circuit design and characterization.
+      In summer 2026, I interned as an Embedded Engineer at Siemens Energy, developing MCU and
+      NVIDIA Jetson systems for generator inspection robots. Working on sensor interfaces, data acquisition,
+      and motor control gave me hands-on experience connecting hardware behavior with software and
+      debugging across that boundary. Together with my FPGA-based machine learning research, this
+      experience shapes how I think about hardware in a complete system. Outside of engineering, I love
       <a href="#photography">photography</a>. Still chasing a good signal, just 
       through a viewfinder instead of a sensor board.
     </p>
@@ -709,11 +713,12 @@
             <div class="card-date">May 2025 - Dec 2025</div>
           </div>
           <p>
-            Worked on accelerating FPGA-based graph neural network inference for particle clustering in CERN's
-            Large Hadron Collider data pipeline. Used layer-wise fixed-point quantization, structured pruning, and an
-            optimized GarNet aggregation step (via the FlowGNN dataflow architecture) to bring inference latency down
-            into the sub-microsecond range, and benchmarked the result against GPU performance, landing a 2.5×
-            throughput improvement.
+            Worked on accelerating FPGA-based graph neural network inference for missing transverse energy
+            (MET) reconstruction in CERN's Large Hadron Collider data filtering pipeline. Reduced inference latency
+            through HGQ-based layer-wise fixed-point quantization and quantization-aware training. Developed a
+            fixed-point C++ implementation of EdgeConv for FPGA inference, covering indexed node-feature gathering,
+            edge-message computation, and neighborhood aggregation, and mapped quantized models to FPGA using
+            hls4ml and Vivado HLS.
           </p>
           <div class="tags">
             <span class="tag">FPGA</span><span class="tag">PyTorch</span>
@@ -837,6 +842,94 @@
   <div class="section-content reveal">
     <h2 class="eyebrow eyebrow-lg">Projects</h2>
     <div class="project-grid">
+      <!-- PROJECT COVER: matrix-accelerator — replace the img src below with your own image path. -->
+      <div class="flip-card" id="project-matrix-accelerator" tabindex="0" role="button" aria-pressed="false" aria-label="Pipelined Matrix-Multiply-Accumulate Accelerator — click to flip for details">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img class="flip-media" src="images/matmul.png"">
+            <div class="flip-hint">Click to flip</div>
+            <div class="flip-caption">
+              <h3>Pipelined Matrix-Multiply-Accumulate Accelerator</h3>
+              <div class="card-date">Sep 2026</div>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <div class="card-head">
+              <h3>Pipelined Matrix-Multiply-Accumulate Accelerator</h3>
+              <div class="card-date">Sep 2026</div>
+            </div>
+            <p>Designed a 32-lane unsigned 8-bit accelerator for a 128×128 matrix, using replicated dual-port ROMs to supply 32 operand pairs per cycle. Pipelined the reduction tree and accumulation datapath with latency-aligned control, meeting 100 MHz timing with +1.95 ns WNS. Completed matrix-vector multiplication, bias addition, and final reduction in 522 cycles (5.22 μs), approaching the 512-cycle compute lower bound, and verified RTL results against a Python reference model.</p>
+            <div class="tags"><span class="tag">RTL</span><span class="tag">Pipelining</span><span class="tag">FPGA</span><span class="tag">Timing Closure</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT COVER: network-on-chip — replace the img src below with your own image path. -->
+      <div class="flip-card" id="project-network-on-chip" tabindex="0" role="button" aria-pressed="false" aria-label="Network-on-Chip Design &amp; Verification — click to flip for details">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img class="flip-media" src="images/noc.png">
+            <div class="flip-hint">Click to flip</div>
+            <div class="flip-caption">
+              <h3>Network-on-Chip Design &amp; Verification</h3>
+              <div class="card-date">Sep 2026 - Oct 2026</div>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <div class="card-head">
+              <h3>Network-on-Chip Design &amp; Verification</h3>
+              <div class="card-date">Sep 2026 - Oct 2026</div>
+            </div>
+            <p>Designed synthesizable RTL for a 6-node, 2-router NoC with FIFO buffering, independent transmit/receive FSMs, backpressure handshakes, and 32-bit packet serialization over 8-bit links. Implemented destination-based routing and round-robin arbitration, completing a 10,000-packet benchmark in 20,665 clock cycles. Verified protocol compliance, packet integrity, ordering, congestion handling, and arbitration fairness in Synopsys VCS with provided directed and constrained-random testbenches.</p>
+            <div class="tags"><span class="tag">SystemVerilog</span><span class="tag">Synopsys VCS</span><span class="tag">NoC</span><span class="tag">Verification</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT COVER: calculator-verification — replace the img src below with your own image path. -->
+      <div class="flip-card" id="project-calculator-verification" tabindex="0" role="button" aria-pressed="false" aria-label="Assertion-Based Verification of Calculator IP — click to flip for details">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img class="flip-media" src="images/assertion.png">
+            <div class="flip-hint">Click to flip</div>
+            <div class="flip-caption">
+              <h3>Assertion-Based Verification of Calculator IP</h3>
+              <div class="card-date">Oct 2026</div>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <div class="card-head">
+              <h3>Assertion-Based Verification of Calculator IP</h3>
+              <div class="card-date">Oct 2026</div>
+            </div>
+            <p>Developed a SystemVerilog testbench with directed stimulus and concurrent assertions for calculator IP. Used expected-state tracking and cycle-specific assertions to check arithmetic results, stack operations, signed overflow, protocol errors, sticky error behavior, and reset recovery.</p>
+            <div class="tags"><span class="tag">SystemVerilog</span><span class="tag">Assertions (SVA)</span><span class="tag">Testbench</span><span class="tag">IP Verification</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT COVER: cmos-circuits — replace the img src below with your own image path. -->
+      <div class="flip-card" id="project-cmos-circuits" tabindex="0" role="button" aria-pressed="false" aria-label="CMOS Circuit Design and Characterization — click to flip for details">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img class="flip-media" src="images/ringosc.png">
+            <div class="flip-hint">Click to flip</div>
+            <div class="flip-caption">
+              <h3>CMOS Circuit Design and Characterization</h3>
+              <div class="card-date">Sep 2026 - Oct 2026</div>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <div class="card-head">
+              <h3>CMOS Circuit Design and Characterization</h3>
+              <div class="card-date">Sep 2026 - Oct 2026</div>
+            </div>
+            <p>Characterized a CMOS inverter in Cadence Virtuoso through DC and transient simulations, extracting switching voltage, noise margins, voltage gain, supply current, and propagation and transition delays. Built a 9-stage ring oscillator and compared frequency, power, and energy per cycle with delay-based estimates. Created a common-source amplifier schematic and layout that passed DRC and LVS checks.</p>
+            <div class="tags"><span class="tag">Cadence Virtuoso</span><span class="tag">CMOS</span><span class="tag">Circuit Simulation</span><span class="tag">DRC / LVS</span></div>
+          </div>
+        </div>
+      </div>
+
       <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="FollowBot — click to flip for details">
         <div class="flip-card-inner">
           <div class="flip-card-front">
@@ -957,20 +1050,29 @@
       <div class="tags">
         <span class="tag">C</span><span class="tag">C++</span><span class="tag">Python</span>
         <span class="tag">SystemVerilog</span><span class="tag">JavaScript</span>
-        <span class="tag">Go</span>
+        <span class="tag">Go</span><span class="tag">Bash/Shell Scripting</span>
       </div>
     </div>
     <div class="skill-group">
       <h4>Frameworks &amp; Tools</h4>
       <div class="tags">
-        <span class="tag">Bash</span><span class="tag">Node.js</span><span class="tag">React</span>
+        <span class="tag">Linux</span><span class="tag">Node.js</span><span class="tag">React</span>
         <span class="tag">Git &amp; GitHub</span><span class="tag">GDB</span>
       </div>
     </div>
     <div class="skill-group">
       <h4>Hardware &amp; Design Tools</h4>
       <div class="tags">
-        <span class="tag">KiCad</span><span class="tag">SolidWorks</span><span class="tag">Arduino</span>
+        <span class="tag">Vivado</span><span class="tag">Synopsys VCS</span>
+        <span class="tag">Cadence Virtuoso</span><span class="tag">Autodesk Fusion PCB</span>
+        <span class="tag">KiCad</span><span class="tag">SolidWorks</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Architectures &amp; Embedded Platforms</h4>
+      <div class="tags">
+        <span class="tag">ARM</span><span class="tag">ARM Cortex-M</span><span class="tag">x86</span>
+        <span class="tag">STM32</span><span class="tag">Arduino</span><span class="tag">Raspberry Pi</span>
       </div>
     </div>
     <div class="skill-group">
@@ -991,9 +1093,10 @@
     <h2 class="section-title">Carnegie Mellon University</h2>
     <div class="card-head">
       <div><h3>B.S. in Electrical &amp; Computer Engineering</h3></div>
-      <div class="card-date">Expected May 2028</div>
+      <div class="card-date">August 2024 - May 2028</div>
     </div>
-    <p style="color: var(--ink-soft); font-size: 18px; margin: 10px 0 14px;">GPA 4.0/4.0 · Dean's List</p>
+    <p style="color: var(--ink-soft); font-size: 18px; margin: 10px 0 14px;">GPA 4.0/4.0 · Pittsburgh, PA</p>
+    <p style="color: var(--ink-soft); margin: 0 0 18px;">College of Engineering Dean’s List 2024-2026</p>
     <div class="coursework">
       <span class="tag">18-341 Logic Design and Verification</span>
       <span class="tag">18-320 Microelectronic Circuits</span>
@@ -1014,7 +1117,7 @@
     <h2 class="eyebrow eyebrow-lg">Contact</h2>
     <div class="contact-links">
       <a href="mailto:jocelynxu888@gmail.com"><span class="k">Email</span> jocelynxu888@gmail.com</a>
-      <a href="https://www.linkedin.com/in/jocelyn-xu-5b8077324" target="_blank" rel="noopener"><span class="k">LinkedIn</span> linkedin.com/in/jocelyn-xu-5b8077324</a>
+      <a href="https://www.linkedin.com/in/jiawei-xu-5b8077324" target="_blank" rel="noopener"><span class="k">LinkedIn</span> linkedin.com/in/jiawei-xu-5b8077324</a>
       <a href="tel:4129014607"><span class="k">Phone</span> 412-901-4607</a>
       <!-- Add a GitHub link here once you have a profile you want to link -->
     </div>
@@ -1031,7 +1134,7 @@
 </section>
 
 <footer>
-  Built by Jocelyn Xu · Last updated <span id="lastUpdated"></span>
+  Built by Jiawei (Jocelyn) Xu · Last updated <span id="lastUpdated"></span>
 </footer>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
